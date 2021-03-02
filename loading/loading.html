@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="loading">Loading</div>
+</body>
+
+<style>
+    body {
+        display: flex;
+        height: 100vh;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        background: #2980b9;
+    }
+
+    .loading {
+        display: flex;
+        color: white;
+        font-size: 3em;
+        text-transform: uppercase;  /* 大写字母 */
+        
+    }
+
+    .loading span {
+        padding: 0 20px;
+        line-height: 100px;
+        background: #34495e;
+        animation: bulge 2s infinite;
+    }
+
+    @keyframes bulge {
+        50% {
+            box-shadow: 0 20px 0 #eee;
+            transform: translateY(-35px);
+        }
+    }
+</style>
+
+<script>
+    let loading = document.querySelector(".loading");
+    let letters = loading.textContent.split("");
+    loading.textContent = "";
+    letters.forEach((letter, i) => {
+        let span = document.createElement("span");
+        span.textContent = letter;
+        span.style.animationDelay = `${i / 5}s`;
+        loading.append(span);
+    });
+
+</script>
+
+</html>
